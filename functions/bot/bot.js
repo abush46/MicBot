@@ -1,4 +1,5 @@
 const { Telegraf } = require("telegraf");
+const { message } = require("telegraf/filters");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 bot.start((ctx) => {
@@ -10,9 +11,9 @@ bot.start((ctx) => {
     return ctx.reply("Error occured");
   }
 });
-bot.hears("hi", (ctx) => {
+bot.hears("/mydata", (ctx) => {
   try {
-    return ctx.reply("Hey there");
+    return ctx.reply("Hey there " + ctx.message.from.first_name + "\nWelcome!");
   } catch (e) {
     console.error("error in start action:", e);
     return ctx.reply("Error occured");
