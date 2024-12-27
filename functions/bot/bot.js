@@ -20,7 +20,7 @@ bot.hears("/mydata", (ctx) => {
   }
 });
 
-bot.command('random', (ctx) => {
+bot.hears("/random", (ctx) => {
   return ctx.reply(
     'random example',
     Markup.inlineKeyboard([
