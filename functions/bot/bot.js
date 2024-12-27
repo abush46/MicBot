@@ -25,7 +25,7 @@ try{
   return ctx.reply(
     'random example',
     Markup.inlineKeyboard([
-      Markup.button.url('LAUNCH', 'http://t.me/MicSoftware_bot/MicApp')
+      Markup.button.url('LAUNCH', 'http://t.me/MicSoftware_bot/MicApp?startapp=$command')
       
     ])
   )
