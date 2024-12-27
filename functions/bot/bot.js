@@ -1,4 +1,4 @@
-const { Telegraf,Markup } = require("telegraf");
+const { Telegraf, Markup } = require("telegraf");
 const { message } = require("telegraf/filters");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -21,16 +21,14 @@ bot.hears("/mydata", (ctx) => {
 });
 
 bot.hears("/random", (ctx) => {
-try{
-  return ctx.reply(
-    'random example',
-    Markup.inlineKeyboard([
-      Markup.button.url('LAUNCH', 'http://t.me/MicSoftware_bot/MicApp?startapp=$command')
-      
-    ])
-  )
-} 
-catch (e) {
+  try {
+    return ctx.reply(
+      "random example",
+      Markup.inlineKeyboard([
+        Markup.button.url("LAUNCH", "http://t.me/MicSoftware_bot/MicApp"),
+      ])
+    );
+  } catch (e) {
     console.error("error in start action:", e);
     return ctx.reply("Error occured");
   }
