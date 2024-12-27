@@ -20,6 +20,16 @@ bot.hears("/mydata", (ctx) => {
   }
 });
 
+bot.command('random', (ctx) => {
+  return ctx.reply(
+    'random example',
+    Markup.inlineKeyboard([
+      Markup.button.callback('Coke', 'Coke'),
+      Markup.button.callback('Dr Pepper', 'Dr Pepper', Math.random() > 0.5),
+      Markup.button.callback('Pepsi', 'Pepsi')
+    ])
+  )
+})
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
   try {
