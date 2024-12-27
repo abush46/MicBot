@@ -1,4 +1,4 @@
-const { Telegraf } = require("telegraf");
+const { Telegraf,Markup } = require("telegraf");
 const { message } = require("telegraf/filters");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -20,6 +20,22 @@ bot.hears("/mydata", (ctx) => {
   }
 });
 
+bot.hears("/random", (ctx) => {
+try{
+  return ctx.reply(
+    'random example',
+    Markup.inlineKeyboard([
+      Markup.button.callback('Coke', 'Coke'),
+      Markup.button.callback('Dr Pepper', 'Dr Pepper', Math.random() > 0.5),
+      Markup.button.callback('Pepsi', 'Pepsi')
+    ])
+  )
+} 
+catch (e) {
+    console.error("error in start action:", e);
+    return ctx.reply("Error occured");
+  }
+});
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
