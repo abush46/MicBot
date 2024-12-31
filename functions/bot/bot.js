@@ -34,6 +34,17 @@ bot.hears("/random", (ctx) => {
   }
 });
 
+bot.on("message", (ctx) => {
+  try {
+    return ctx.reply(
+      " " + ctx.message.from.first_name + " said " + ctx.message.text
+    );
+  } catch (e) {
+    console.error("error in start action:", e);
+    return ctx.reply("Error occured");
+  }
+});
+
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
   try {
